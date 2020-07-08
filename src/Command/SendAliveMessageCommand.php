@@ -20,7 +20,7 @@ class SendAliveMessageCommand
     use ServiceSubscriberTrait;
 
     protected string $monitorAddress;
-    protected string $appName
+    protected string $appName;
 
     public function __construct(string $monitorAddress, string $appName)
     {

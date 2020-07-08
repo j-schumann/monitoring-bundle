@@ -5,10 +5,12 @@
         https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="vrok.monitoring.send_alive_command" class="Vrok\MonitoringBundle\DependencyInjection\Configuration">
+        <defaults autowire="true" autoconfigure="true"/>
+        <service id="vrok.monitoring.send_alive_command" class="Vrok\MonitoringBundle\Command\SendAliveMessageCommand">
             <argument>%vrok_monitoring.monitor_address%</argument>
             <argument>%vrok_monitoring.app_name%</argument>
             <tag name="console.command" command="monitoring:send-alive-message" />
+            <tag name="container.service_subscriber" />
         </service>
     </services>
 </container>
