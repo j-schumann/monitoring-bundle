@@ -13,9 +13,7 @@ use Symfony\Component\Mime\Email;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
 use Symfony\Contracts\Service\ServiceSubscriberTrait;
 
-class SendAliveMessageCommand
-    extends Command
-    implements ServiceSubscriberInterface
+class SendAliveMessageCommand extends Command implements ServiceSubscriberInterface
 {
     use ServiceSubscriberTrait;
 
@@ -41,11 +39,11 @@ class SendAliveMessageCommand
     {
         $subject = "Service {$this->appName} is alive!";
         $body = "Automatic message from {$this->appName}: "
-            . "The service is alive and can send emails"
-            . "\nat ".date(DATE_ATOM)
+            .'The service is alive and can send emails'
+            ."\nat ".date(DATE_ATOM)
             // we need a comparable integer for the --capture-max option of the
             // nagios/icinga plugin "check_imap_receive"
-            ." (timestamp ".time().")"
+            .' (timestamp '.time().')'
         ;
 
         $email = (new Email())

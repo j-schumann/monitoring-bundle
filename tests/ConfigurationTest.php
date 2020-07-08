@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Vrok\MonitoringBundle\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Vrok\MonitoringBundle\DependencyInjection\Configuration;
-use PHPUnit\Framework\TestCase;
 
 class ConfigurationTest extends TestCase
 {
