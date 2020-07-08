@@ -1,8 +1,8 @@
 {
     "name": "vrok/monitoring-bundle",
     "type": "library",
-    "description": "Message classes to request & receive PDF files via Symfony messenger",
-    "keywords": ["symfony", "messenger", "microservice", "pdf"],
+    "description": "Symfony bundle to send 'alive' emails to a monitoring address (cron-triggered)",
+    "keywords": ["symfony", "monitoring", "mailer", "cron", "nagios"],
     "homepage": "https://vrok.de",
     "license": "MIT",
     "require": {
