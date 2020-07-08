@@ -1,6 +1,6 @@
 {
     "name": "vrok/monitoring-bundle",
-    "type": "library",
+    "type": "symfony-bundle",
     "description": "Symfony bundle to send 'alive' emails to a monitoring address (cron-triggered)",
     "keywords": ["symfony", "monitoring", "mailer", "cron", "nagios"],
     "homepage": "https://vrok.de",
