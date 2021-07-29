@@ -16,7 +16,7 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer":  "^3.0.0",
         "phpunit/phpunit": "^9.5.7",
-        "roave/security-advisories": "dev-latest
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {
