@@ -5,7 +5,7 @@ and mails can be sent by the system (e.g. your Docker container running the appl
 If the Symfony messenger is configured, the messages are pushed to the queue and processed by a worker, so this also
 checks if queue & workers are up. 
 
-[![Build Status](https://travis-ci.org/j-schumann/monitoring-bundle.svg?branch=master)](https://travis-ci.org/j-schumann/monitoring-bundle)
+[![CI Status](https://github.com/j-schumann/monitoring-bundle/actions/workflows/ci.yaml/badge.svg)](https://github.com/j-schumann/monitoring-bundle/actions)
 [![Coverage Status](https://coveralls.io/repos/github/j-schumann/monitoring-bundle/badge.svg?branch=master)](https://coveralls.io/github/j-schumann/monitoring-bundle?branch=master)
 
 ## Installation
