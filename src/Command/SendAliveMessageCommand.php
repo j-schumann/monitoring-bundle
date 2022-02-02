@@ -35,7 +35,7 @@ class SendAliveMessageCommand extends Command implements ServiceSubscriberInterf
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $subject = "Service {$this->appName} is alive!";
         $body = "Automatic message from {$this->appName}: "
