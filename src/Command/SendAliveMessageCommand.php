@@ -10,6 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Contracts\Service\Attribute\SubscribedService;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
 use Symfony\Contracts\Service\ServiceSubscriberTrait;
 
@@ -65,11 +66,13 @@ class SendAliveMessageCommand extends Command implements ServiceSubscriberInterf
         return 0;
     }
 
+    #[SubscribedService]
     private function logger(): LoggerInterface
     {
         return $this->container->get(__METHOD__);
     }
 
+    #[SubscribedService]
     private function mailer(): MailerInterface
     {
         return $this->container->get(__METHOD__);
