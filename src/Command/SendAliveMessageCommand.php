@@ -5,27 +5,23 @@ declare(strict_types=1);
 namespace Vrok\MonitoringBundle\Command;
 
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
-use Symfony\Contracts\Service\Attribute\SubscribedService;
-use Symfony\Contracts\Service\ServiceSubscriberInterface;
-use Symfony\Contracts\Service\ServiceSubscriberTrait;
 
-class SendAliveMessageCommand extends Command implements ServiceSubscriberInterface
+#[AsCommand('monitor:send-alive-message')]
+class SendAliveMessageCommand extends Command
 {
-    use ServiceSubscriberTrait;
-
-    protected string $monitorAddress;
-    protected string $appName;
-
-    public function __construct(string $monitorAddress, string $appName)
-    {
+    public function __construct(
+        private string $monitorAddress,
+        private string $appName,
+        private readonly MailerInterface $mailer,
+        private readonly LoggerInterface $logger,
+    ) {
         parent::__construct();
-        $this->monitorAddress = $monitorAddress;
-        $this->appName = $appName;
     }
 
     protected function configure()
@@ -38,8 +34,8 @@ class SendAliveMessageCommand extends Command implements ServiceSubscriberInterf
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $subject = "Service {$this->appName} is alive!";
-        $body = "Automatic message from {$this->appName}: "
+        $subject = "Service $this->appName is alive!";
+        $body = "Automatic message from $this->appName: "
             .'The service is alive and can send emails'
             ."\nat ".date(DATE_ATOM)
             // we need a comparable integer for the --capture-max option of the
@@ -57,24 +53,12 @@ class SendAliveMessageCommand extends Command implements ServiceSubscriberInterf
         // SentMessage is returned. So we cannot check here if the email was
         // really sent, it probably is first sent to the message queue to be
         // processed asynchronously by a worker
-        $this->mailer()->send($email);
+        $this->mailer->send($email);
 
-        $success = "Sent alive-message for {$this->monitorAddress} to the mail transport or message bus";
-        $this->logger()->info($success);
+        $success = "Sent alive-message for $this->monitorAddress to the mail transport or message bus";
+        $this->logger->info($success);
         $output->writeln($success);
 
         return 0;
-    }
-
-    #[SubscribedService]
-    private function logger(): LoggerInterface
-    {
-        return $this->container->get(__METHOD__);
-    }
-
-    #[SubscribedService]
-    private function mailer(): MailerInterface
-    {
-        return $this->container->get(__METHOD__);
     }
 }
