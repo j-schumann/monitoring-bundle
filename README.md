@@ -6,7 +6,7 @@ If the Symfony messenger is configured, the messages are pushed to the queue and
 checks if queue & workers are up. 
 
 [![CI Status](https://github.com/j-schumann/monitoring-bundle/actions/workflows/ci.yaml/badge.svg)](https://github.com/j-schumann/monitoring-bundle/actions)
-[![Coverage Status](https://coveralls.io/repos/github/j-schumann/monitoring-bundle/badge.svg?branch=master)](https://coveralls.io/github/j-schumann/monitoring-bundle?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/j-schumann/monitoring-bundle/badge.svg?branch=main)](https://coveralls.io/github/j-schumann/monitoring-bundle?branch=main)
 
 ## Installation
 
