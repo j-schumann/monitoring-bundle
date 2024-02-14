@@ -33,7 +33,10 @@ class SendAliveMessageCommandTest extends KernelTestCase
         $commandTester = new CommandTester($command);
         $commandTester->execute([]);
 
-        $this->assertSame(0, $commandTester->getStatusCode());
+        $this->assertSame(
+            SendAliveMessageCommand::SUCCESS,
+            $commandTester->getStatusCode()
+        );
     }
 
     public function testService(): void

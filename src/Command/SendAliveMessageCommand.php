@@ -59,6 +59,6 @@ class SendAliveMessageCommand extends Command
         $this->logger->info($success);
         $output->writeln($success);
 
-        return 0;
+        return self::SUCCESS;
     }
 }
