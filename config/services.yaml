@@ -1,0 +1,10 @@
+services:
+  vrok.monitoring.send_alive_command:
+    class: Vrok\MonitoringBundle\Command\SendAliveMessageCommand
+    arguments:
+      - '%vrok_monitoring.monitor_address%'
+      - '%vrok_monitoring.app_name%'
+      - '@Symfony\Component\Mailer\MailerInterface'
+      - '@Psr\Log\LoggerInterface'
+    tags:
+      - { name: 'console.command', command: 'monitor:send-alive-message' }
