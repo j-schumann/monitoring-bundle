@@ -15,12 +15,12 @@ class SendAliveMessageCommandTest extends KernelTestCase
 {
     public function testSendsMailAndCreatesLog(): void
     {
-        $logger = $this->createStub(LoggerInterface::class);
+        $logger = $this->createMock(LoggerInterface::class);
         $logger->expects($this->once())
             ->method('info')
             ->with('Sent alive-message for mail@address.com to the mail transport or message bus');
 
-        $mailer = $this->createStub(MailerInterface::class);
+        $mailer = $this->createMock(MailerInterface::class);
         $mailer->expects($this->once())
             ->method('send');
 
@@ -33,7 +33,7 @@ class SendAliveMessageCommandTest extends KernelTestCase
         $commandTester = new CommandTester($command);
         $commandTester->execute([]);
 
-        $this->assertSame(
+        self::assertSame(
             SendAliveMessageCommand::SUCCESS,
             $commandTester->getStatusCode()
         );

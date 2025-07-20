@@ -12,24 +12,19 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
-#[AsCommand('monitor:send-alive-message')]
+#[AsCommand(
+    name: 'monitor:send-alive-message',
+    description: 'Sends an email to the configured monitor address with a notification that the app is alive and can send emails.',
+)]
 class SendAliveMessageCommand extends Command
 {
     public function __construct(
-        private string $monitorAddress,
-        private string $appName,
+        private readonly string $monitorAddress,
+        private readonly string $appName,
         private readonly MailerInterface $mailer,
         private readonly LoggerInterface $logger,
     ) {
         parent::__construct();
-    }
-
-    protected function configure()
-    {
-        $this
-            ->setName('monitor:send-alive-message')
-            ->setDescription('Sends an email to the configured monitor address with a notification that the app is alive and can send emails.')
-        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -49,7 +44,7 @@ class SendAliveMessageCommand extends Command
             ->subject($subject)
             ->text($body);
 
-        // only if the message is sent directly via a Transport an instance of
+        // Only if the message is sent directly via a Transport, an instance of
         // SentMessage is returned. So we cannot check here if the email was
         // really sent, it probably is first sent to the message queue to be
         // processed asynchronously by a worker
