@@ -43,9 +43,6 @@ return RectorConfig::configure()
         // mostly unnecessary as they are callbacks to array_filter etc.
         AddArrowFunctionReturnTypeRector::class,
 
-        // replaces our (imported) Types::JSON with \Doctrine\DBAL\Types\Types::JSON
-        AttributeKeyToClassConstFetchRector::class,
-
         // replaces null === $project with !$project instanceof Project
         FlipTypeControlToUseExclusiveTypeRector::class,
 
@@ -57,8 +54,5 @@ return RectorConfig::configure()
         // invokable. But cannot transform configured descriptions to attributes.
         // Also, invokables are not supported by the CommandTester.
         InvokableCommandInputAttributeRector::class,
-
-        // #[AsTwigFilter] is only available in SF 7.3+, we need to support 7.2
-        GetFiltersToAsTwigFilterAttributeRector::class,
     ])
 ;

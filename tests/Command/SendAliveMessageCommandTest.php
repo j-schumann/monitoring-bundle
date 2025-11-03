@@ -11,7 +11,7 @@ use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Mailer\MailerInterface;
 use Vrok\MonitoringBundle\Command\SendAliveMessageCommand;
 
-class SendAliveMessageCommandTest extends KernelTestCase
+final class SendAliveMessageCommandTest extends KernelTestCase
 {
     public function testSendsMailAndCreatesLog(): void
     {
@@ -41,7 +41,7 @@ class SendAliveMessageCommandTest extends KernelTestCase
 
     public function testService(): void
     {
-        $application = new Application(static::bootKernel());
+        $application = new Application(self::bootKernel());
         self::assertTrue($application->has('monitor:send-alive-message'));
     }
 }
