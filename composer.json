@@ -13,7 +13,7 @@
         "symfony/framework-bundle":  "^7.2.0|^8.0.0",
         "symfony/http-kernel": "^7.2.0|^8.0.0",
         "symfony/mailer": "^7.2.0|^8.0.0",
-        "symfony/monolog-bundle": "^3.8.0",
+        "symfony/monolog-bundle": "^4.0.0",
         "symfony/yaml": "^7.2.0|^8.0.0"
     },
     "require-dev": {
