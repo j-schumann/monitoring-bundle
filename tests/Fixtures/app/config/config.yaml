@@ -1,5 +1,6 @@
 framework:
   handle_all_throwables: true
+  test: true
   php_errors:
     log: false
 vrok_monitoring:
