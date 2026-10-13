@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Vrok\MonitoringBundle\Tests\Command;
 
 use Psr\Log\LoggerInterface;
